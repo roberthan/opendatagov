@@ -2,6 +2,7 @@
     <head>
         <title>dataGOV</title>
         <link rel="stylesheet" href="css/main.css">
+        <link href='http://fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css'>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
         <script src="js/d3.js"></script>
         <script src="js/d3.layout.cloud.js"></script>
@@ -10,8 +11,18 @@
     </head>
     <body>
         <div class="centered">
+            <div class="titlebar">
+                <span class="logo"></span>
+                <em>search</em>.data.gov
+            </div>
+            <div class="instructions">
+                Click a keyword in the cloud to explore data available on data.gov.
+            </div>
             <div class="tagcloud" id="tagcloud-1">
-                
+                <!-- Tag cloud is inserted here-->
+            </div>
+            <div class="search-container">
+                <input type="search" name="search-box" id="search-box" placeholder="Search for data here..."></input>
             </div>
         </div>
     </body>
