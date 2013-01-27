@@ -9,9 +9,44 @@ body, html {
     margin-left: auto;
     margin-right: auto;
     width: 960px;
+    padding-top: 10px;
 }
 
-.tagword {
-    padding: 2px;
+.tagcloud text {
     cursor: pointer;
+
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.tagcloud text.commerce {
+    fill: purple;
+}
+
+.tagcloud text.energy {
+    fill: lightgreen;
+}
+
+.tagcloud text.health {
+    fill: lightblue;
+}
+
+.tagcloud text.education {
+    fill: pink;
+}
+
+.tagcloud text.safety {
+    fill: blue;
+}
+
+.tagcloud text.finance {
+    fill: orange;
+}
+
+.tagcloud text.global-dev {
+    fill: brown;
 }
