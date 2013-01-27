@@ -1,0 +1,17 @@
+body, html {
+    font-family: Impact, sans, sans-serif;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+.centered {
+    margin-left: auto;
+    margin-right: auto;
+    width: 960px;
+}
+
+.tagword {
+    padding: 2px;
+    cursor: pointer;
+}
