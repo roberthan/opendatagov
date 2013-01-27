@@ -30,7 +30,8 @@ keywords_all = []
 with open('../datasource/Data.gov_Catalog.csv') as csvfile:
   reader = csv.DictReader(csvfile)
   for row in reader:
-    keywords = row['Keywords'] + row['Description']
+    keywords = row['Keywords']
+    description = row['Description']
     keyword_list = matcher.split(keywords)
     stripped_list = map(lambda x: x.strip(), keyword_list)
     filtered_list = []
