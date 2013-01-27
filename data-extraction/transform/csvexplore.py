@@ -1,12 +1,12 @@
 import csv
 import re
 from collections import Counter
-from stemming.porter2 import stem
-from stopwords import stopwords
 #CSVFILE = open('Data.gov_Catalog.csv')
 
 # takes a list of column headers and creates a mapping
 # of 'column name' -> 'index'
+from lib import stopwords
+
 class ColumnMap(dict):
 
   def build_from(self, header_list):
