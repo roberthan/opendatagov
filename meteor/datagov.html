@@ -1,0 +1,57 @@
+<head>
+  <title>Data2</title>
+  <link href="http://fonts.googleapis.com/css?family=Abel|Lato:100,300,400,700" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+  <div id="outer">
+    {{> search}}
+  </div>
+</body>
+
+<template name="search">
+  
+  <div class="title {{searchstate}}">
+    Data<span class="highlight">2</span>
+  </div>
+  
+  <div class="query {{searchstate}}">
+    <input type="text" class="searchstring" value="{{lastquery}}" />
+    <button class="searchgo">Search</button>
+  </div>
+
+  {{> meta}}
+
+  <div class="results {{searchstate}}">
+    {{#each results}}
+      {{> result}}
+    {{/each}}
+  </div>
+  
+  {{#if results.length}}
+    {{> meta}}
+  {{/if}}
+</template>
+
+<template name="result">
+  <div class="result">
+    <a class="result-title" href="{{url}}" target="_blank">{{title}}</a>
+    <div class="description"">{{description}}</div>
+    <div class="agency">
+      {{agency}}
+      {{#if subagency}} : {{subagency}}{{/if}}
+    </div>
+  </div>
+</template>
+
+<template name="meta">
+  {{#if results.length}}
+  <div class="results-metadata">
+    1-{{results.length}} of ? results
+  </div>
+  {{else}}
+  <div class="results-metadata {{searchstate}}">
+    no results
+  </div>
+  {{/if}}
+</template>
