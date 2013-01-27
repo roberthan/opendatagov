@@ -5,62 +5,41 @@ $(function() {
     $.each(window.words, function(idx, word) {
         data[word] = Math.floor(Math.random()*200) + 1;
     });
-    var proto_div = "<div class=\"tagword\"></div>";
+    
+    var fontSize = d3.scale.log().range([10, 100]);
+    fontSize = fontSize.domain([min_count, max_count]);
 
-    function randOrd(){
-        return (Math.round(Math.random())-0.5); 
+    function draw(w) {
+        console.log(w);
+        d3.select("#tagcloud-1").append("svg")
+            .attr("width", 960)
+            .attr("height", 600)
+            .append("g")
+            .attr("transform", "translate(480,300)")
+            .selectAll("text")
+            .data(w)
+            .enter().append("text")
+            .style("font-size", function(d) { return d.size + "px"; })
+            .style("font-family", "Impact")
+            .style("fill", function(d, i) { return "red"; })
+            .attr("text-anchor", "middle")
+            .attr("transform", function(d) {
+                return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
+            }).text(function(d){return d.text;});
     }
 
-    function logsize(count, min_count, max_count) {
-
-        // The result should be between 100 an 10000000
-        var minv = Math.log(12.0);
-        var maxv = Math.log(60.0);
-
-        // calculate adjustment factor
-        var scale = (maxv-minv) / (max_count-min_count);
-
-        return Math.exp(minv + scale*(count-min_count));
-    }
-
-    var parent_div = $(".tagcloud");
-    parent_div.hide();
-
-    var words = [];
-    $.each(data, function (word, count) {
-        var size = logsize(count, min_count, max_count);
-        var new_div = $(proto_div);
-        new_div.text(word);
-        new_div.css("font-size", size+"px");
-        var color = (Math.floor(Math.random()*150)).toString(16);
-        if (color.length < 2) {
-            color = "0"+color;
-        }
-        new_div.css("color", "#"+color+color+color);
-        new_div.attr("data-color", "#"+color+color+color);
-        console.log(word, count, color);
-        words.push(new_div);
-    });
-    words.sort(randOrd);
-
-    $.each(words, function(idx, div) {
-        parent_div.append(div);
-    });
-
-    parent_div.show();
-
-    $('.tagcloud').masonry({
-        itemSelector: '.tagword',
-        columnWidth: 10,
-        isAnimated: true
-    });
-
-    $(".tagcloud").on('mouseenter', '.tagword', function(evt) {
-        $(this).css("color", "#ee5555");
-    });
-
-    $(".tagcloud").on('mouseleave', '.tagword', function(evt) {
-        $(this).css("color", $(this).attr("data-color"));
-    });
+    var layout = d3.layout.cloud()
+            .size([960, 600])
+            .words(window.words.map(function(d) {
+                return {text: d, size: data[d]};
+            }))
+            .timeInterval(10)
+            .text(function(d) { return d.text; })
+            .font("Impact")
+            .fontSize(function(d) { return fontSize(+d.size) })
+            .rotate(function(d) { return ~~(Math.random() * 5) * 30 - 60; })
+            .padding(1)
+            .on("end", draw)
+            .start();
 
 });
