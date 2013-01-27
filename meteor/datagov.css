@@ -1,0 +1,140 @@
+body {
+  background: #fff url(http://alpha.data.gov/images/bg.png) top center no-repeat fixed;
+  font-family: 'Lato', Helvetica, Arial, san-serif;
+  font-weight: normal;
+  margin: 0;
+  padding: 0;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+  line-height: 1.4em;
+}
+
+input, button {
+  font-family: 'Lato', Helvetica, Arial, san-serif;
+}
+
+div, a {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
+#outer {
+  width: 600px;
+  margin: 20px auto;
+}
+
+.title {
+  font-family: 'Abel', Helvetica, sans-serif;
+  color: #888;
+  font-size: 60px;
+  line-height: 1em;
+  margin-bottom: 10px;
+  transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+  -o-transition: all 0.5s;
+}
+
+.title .highlight {
+  color: #C3423A;
+}
+
+.title.initial {
+  font-size: 85px;
+  margin-top: 150px;
+  vertical-align: bottom;
+}
+
+.query.searching,
+.results.searching {
+  opacity: 0.5;
+  -webkit-opacity: 0.5;
+  -moz-opacity: 0.5;
+}
+
+.query .searchstring{
+  font-size: 1em;
+  padding: 4px 8px;
+}
+
+.query .searchgo {
+  font-size: 1em;
+  padding: 6px 8px;
+}
+
+.results {
+  box-shadow: 0 0 1px rgba(0,0,0,.6) inset;
+  -moz-box-shadow: 0 0 1px rgba(0,0,0,.6) inset;
+  -webkit-box-shadow: 0 0 1px rgba(0,0,0,.6) inset;
+}
+
+.results-metadata {
+  font-style: italic;
+  color: gray;
+}
+
+.results-metadata.initial,
+.results-metadata.searching {
+  display: none;
+}
+
+.result {
+  transition: background 0.25s;
+  -moz-transition: background 0.25s;
+  -webkit-transition: background 0.25s;
+  -o-transition: background 0.25s;
+  background: rgba(240,240,240,.7);
+  padding: 10px;
+}
+
+.result:hover {
+  background: rgba(250,250,250,.9);
+}
+
+.result.selected {
+  background-color: yellow;
+}
+
+.result.selected .score {
+  color: black;
+}
+
+.result .result-title {
+  display: inline-block;
+  width: 90%;
+  font-size: 1em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.result .description {
+  display: inline-block;
+  width: 100%;
+  font-size: 1em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.result .score {
+  display: inline-block;
+  text-align: right;
+  font-size: 1em;
+  font-weight: bold;
+  color: #777;
+}
+
+.result .agency {
+  font-size: 80%;
+  color: #777;
+  line-height: 1.4em;
+}
+
+.results-metadata {
+  margin: 10px 0;
+}
