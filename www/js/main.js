@@ -165,4 +165,15 @@ $(function() {
             get_tagcloud(text);
         }
     });
+    //modal box for about
+    $(".btn_about").on("click", function() {
+        $("body").toggleClass("modal_open");
+    });
+
+    $(".centered").on("click", function() {
+        $("body").toggleClass("modal_open");
+    });
+    $(".modal_btn_close").on("click", function() {
+        $("body").toggleClass("modal_open");
+    });
 });

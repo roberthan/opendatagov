@@ -36,7 +36,7 @@ def getWords(filter):
 def getDetails(filter):
     if not filter == '':
         f = filter.split('-')
-        query = db.catalog.find( { 't' : { '$all': f } }, { 'n' : 1, 'u':1, 'c':1 } )
+        query = db.catalog.find( { 't' : { '$all': f } }, { 'n' : 1, 'u':1, 'c':1 },  )
     else:
         query = db.catalog.find()
         #        eps = json.dumps(db.catalog.find( { 't' : { '$all': f } }, { 'n' : 1, 'u':1 } ).limit(50)['result'])
@@ -45,7 +45,7 @@ def getDetails(filter):
     meta['count'] = query.count()
     i = 0
     arr=[]
-    for item in query.limit(50):
+    for item in query.limit(50).skip(0):
         i = {}
 #        print item['n']
 #        print item['u']
@@ -59,7 +59,7 @@ def getDetails(filter):
     eps = {}
     eps['meta']=meta
     eps['results']=arr
-#    print eps
+    print eps
     return json.dumps(eps)
 
 if __name__ == '__main__':
