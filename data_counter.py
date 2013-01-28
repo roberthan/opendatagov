@@ -14,7 +14,7 @@ def getWords(filter):
 #                ,'data': { "$push": "$n"}
             } },
             {"$sort": SON([("count", -1), ("_id", -1)])},
-            { "$limit" : 50 }
+            { "$limit" : 100 }
             ]
     else:
         pipe2 = [
