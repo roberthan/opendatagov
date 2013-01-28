@@ -104,11 +104,17 @@ body {
     text-align: center;
     margin-top: 20px;
     margin-bottom: 20px;
+    position: relative;
 }
 
 #search-box {
     width: 50%;
-    border: 1px solid #333;
+}
+
+#loading-image {
+    position: absolute;
+    right: 22%;
+    top: 3px;
 }
 
 .status-results {

@@ -2,6 +2,9 @@ var searching = false;
 
 var get_tagcloud = function(query){
     searching = true;
+    $("#loading-image").show();
+
+
     var fixed_query = $.trim(query);
     fixed_query = fixed_query.replace(" ","-")
     var endpoint = "http://data2.me:5000/tagcloud/" + encodeURIComponent(fixed_query);
@@ -78,9 +81,13 @@ var get_tagcloud = function(query){
                 .rotate(function(d) { return 0;}) //~~(Math.random() * 5) * 30 - 60; })
                 .on("end", draw)
                 .start();
+
+        $("#loading-image").hide();
+
     });
 
     searching = false;
+    
 }
 
 var proto_div = "<div class=\"search-result\"></div>"
@@ -118,7 +125,7 @@ var populate_search = function(query) {
 
         $.each(data.results, function(idx, d) {
             var new_div = $(proto_div);
-            var new_link = $("<a></a>");
+            var new_link = $("<a  target=\"_blank\"></a>");
             
             new_link.attr("href",d.url);
             new_link.text(d.name);
