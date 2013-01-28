@@ -52,11 +52,13 @@ var get_tagcloud = function(query){
 
             $(".tagword").on("click", function(e) {
                 var text = $.trim($(this).text());
-                $("#search-box").val(text);
-                // FIXME add loading animation
+                var old_val = $.trim($("#search-box").val())
+
                 if (searching) {
                     return;
                 }
+ 
+                $("#search-box").val(old_val + " " + text);
                 get_tagcloud(text);
             });
 
