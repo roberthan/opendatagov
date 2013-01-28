@@ -3,7 +3,6 @@ from pymongo_connection import *
 from bson.son import SON
 import json
 def getWords(filter):
-#    print filter
     if not filter == '':
         f = filter.split('-')
         pipe2 = [
@@ -12,6 +11,7 @@ def getWords(filter):
             { '$group' : {
                 '_id' : "$t"
                 , "count": {"$sum": 1}
+#                ,'data': { "$push": "$n"}
             } },
             {"$sort": SON([("count", -1), ("_id", -1)])},
             { "$limit" : 50 }

@@ -12,5 +12,13 @@ def find(filter_text=''):
 #    return 'Hello World'
     return getWords(filter_text)
 
+@app.after_request
+def after_request(response):
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    response.headers.add('Access-Control-Allow-Methods', 'POST, GET, OPTIONS')
+    response.headers.add('Access-Control-Max-Age', '1000')
+    response.headers.add("Access-Control-Allow-Headers", '*')
+    return response
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0')
