@@ -112,7 +112,7 @@ body {
 .results {
     background-color: #f0f0f0;
     border: 2px dashed #ccc;
-    min-height: 200px;
+    min-height: 100px;
 
     margin-top: 10px;
 
@@ -125,7 +125,7 @@ body {
 
 .results .no-results {
     font-color: #333;
-    line-height: 200px;
+    line-height: 100px;
     font-size: 30px;
     text-align: center;
 }
