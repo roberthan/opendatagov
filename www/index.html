@@ -22,13 +22,17 @@
                 <!-- Tag cloud is inserted here-->
             </div>
             <div class="search-container">
-                <input type="search" name="search-box" id="search-box" placeholder="Search for data here..."></input>
+                <input type="search" name="search-box" id="search-box" placeholder="Search for data here and press [Enter]..."></input>
             </div>
             <div class="extra-info">
                 <em class="number-results">100,000 results</em> found in <em class="number-categories">13 categories</em>.
             </div>
             <div class="results">
-                <div class="no-results">no results</div>
+                <div class="status-results">
+                    <div class="no-results">no results</div>
+                    <div class="loading">loading results</div>
+                </div>
+                <div class="results-list"></div>
             </div>
         </div>
         <script type="text/javascript">
