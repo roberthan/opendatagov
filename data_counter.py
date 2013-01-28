@@ -41,6 +41,7 @@ def getDetails(filter):
         query = db.catalog.find().limit(50)
         #        eps = json.dumps(db.catalog.find( { 't' : { '$all': f } }, { 'n' : 1, 'u':1 } ).limit(50)['result'])
 #        print eps
+#    print
     i = 0
     arr=[]
     for item in query:
@@ -49,14 +50,18 @@ def getDetails(filter):
         print item['u']
         i['name']=item['n']
         i['url']=item['u']
-        i['category']=item['c']
+        if item.has_key('c'):
+            i['category']=item['c']
+        else:
+            i['category']=''
         arr.append(i)
+
     eps=json.dumps(arr)
     return eps
 
 if __name__ == '__main__':
-#    getDetails('data-toxic')
-    getDetails('')
+    getDetails('data-toxic')
+#    getDetails('')
 #    getWords('data-toxic')
 #        arr = samples.find({"f": filter})
 #    else:
