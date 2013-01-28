@@ -36,6 +36,8 @@ var get_tagcloud = function(query){
                 .enter().append("text")
                 .style("font-size", function(d) { return d.size + "px"; })
                 .style("font-family", "Lato")
+                // FIXME: Debug?
+                .style("fill",function(d){return '#'+Math.floor(Math.random()*16777215).toString(16);})
                 .attr("text-anchor", "middle")
                 .attr("transform", function(d) {
                     return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
@@ -53,9 +55,10 @@ var get_tagcloud = function(query){
             });
 
             $(".tagword").hover(function(e) {
+                $(this).attr("data-fill", $(this).css("fill"));
                 $(this).css("fill", "#e33");
             }, function(e) {
-                $(this).css("fill", "");
+                $(this).css("fill", $(this).attr("data-fill"));
             });
         }
 
