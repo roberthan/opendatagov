@@ -111,7 +111,7 @@ body {
     border: 1px solid #333;
 }
 
-.results {
+.status-results {
     background-color: #f0f0f0;
     border: 2px dashed #ccc;
     min-height: 100px;
@@ -125,9 +125,23 @@ body {
     border-radius: 5px;*/
 }
 
-.results .no-results {
+.results .no-results, .results .loading  {
     font-color: #333;
     line-height: 100px;
     font-size: 30px;
     text-align: center;
+}
+
+.results .loading {
+    display: none;
+}
+
+.results-list .search-result {
+    background-color: #f0f0f0;
+
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    min-height: 20;
+    padding: 3px;
+    padding-left: 5px;
 }
