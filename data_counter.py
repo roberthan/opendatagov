@@ -59,12 +59,12 @@ def getDetails(filter):
     eps = {}
     eps['meta']=meta
     eps['results']=arr
-    print eps
+#    print eps
     return json.dumps(eps)
 
 if __name__ == '__main__':
-    getDetails('toxic')
-#    getDetails('')
+#    getDetails('toxic')
+    getDetails('')
 #    getWords('data-toxic')
 #        arr = samples.find({"f": filter})
 #    else:
