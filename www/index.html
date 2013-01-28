@@ -1,7 +1,9 @@
 <html>
     <head>
         <title>dataGOV</title>
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
         <link rel="stylesheet" href="css/main.css">
+        <link href='http://fonts.googleapis.com/css?family=Abel|Lato' rel='stylesheet' type='text/css'>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
         <script src="js/d3.js"></script>
         <script src="js/d3.layout.cloud.js"></script>
@@ -10,8 +12,24 @@
     </head>
     <body>
         <div class="centered">
+            <div class="titlebar">
+                <img class="logo" src="img/icon.png"></img>
+                <em>search</em>.data.gov
+            </div>
+            <div class="extra-info">
+                Click a keyword in the cloud to explore data available on data.gov.
+            </div>
             <div class="tagcloud" id="tagcloud-1">
-                
+                <!-- Tag cloud is inserted here-->
+            </div>
+            <div class="search-container">
+                <input type="search" name="search-box" id="search-box" placeholder="Search for data here..."></input>
+            </div>
+            <div class="extra-info">
+                <em class="number-results">100,000 results</em> found in <em class="number-categories">13 categories</em>.
+            </div>
+            <div class="results">
+                <div class="no-results">no results</div>
             </div>
         </div>
     </body>
