@@ -171,7 +171,9 @@ $(function() {
     });
 
     $(".centered").on("click", function() {
-        $("body").toggleClass("modal_open");
+        if($("body").hasClass("modal_open")){
+            $("body").removeClass("modal_open");
+        }
     });
     $(".modal_btn_close").on("click", function() {
         $("body").toggleClass("modal_open");
