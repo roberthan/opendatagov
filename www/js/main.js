@@ -71,7 +71,8 @@ var get_tagcloud = function(query){
                     return {text: " "+d._id+" ", size: d.count};
                 }))
                 .timeInterval(Infinity)
-                .font("Impact")
+                .font("Lato")
+                .padding(1)
                 .text(function(d) { return d.text; })
                 .fontSize(function(d) { return fontSize(+d.size) })
                 .rotate(function(d) { return 0;}) //~~(Math.random() * 5) * 30 - 60; })
