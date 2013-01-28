@@ -50,8 +50,9 @@ reducer = Code("""
                 }
                 """)
 #, query={ 't' : "open" }
-result = db.catalog.map_reduce(mapper, reducer, "key_terms")
-#result = db.catalog.map_reduce(mapper, reducer, "test_results", query={ 't' : { '$all': [ "toxic", "data" ] }})
-for doc in result.find():
+result = db.catalog.map_reduce(mapper, reducer,
+    "key_terms", query={ 't' : { '$all': [ "toxic", "data" ] }}).find().limit(20)
+#result = db.catalog.map_reduce(mapper, reducer, "test_results"})
+for doc in result:
    print doc
 

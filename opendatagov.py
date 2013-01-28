@@ -12,6 +12,12 @@ def find(filter_text=''):
 #    return 'Hello World'
     return getWords(filter_text)
 
+@app.route('/keyword/')
+@app.route('/keyword/<filter_text>')
+def keyword(filter_text=''):
+#    return 'Hello World'
+    return getDetails(filter_text)
+
 @app.after_request
 def after_request(response):
     response.headers.add('Access-Control-Allow-Origin', '*')
