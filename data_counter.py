@@ -58,13 +58,13 @@ def getDetails(filter):
         arr.append(i)
     eps = {}
     eps['meta']=meta
-    eps['results']=json.dumps(arr)
-    print eps
-    return eps
+    eps['results']=arr
+#    print eps
+    return json.dumps(eps)
 
 if __name__ == '__main__':
-#    getDetails('data-toxic')
-    getDetails('')
+    getDetails('toxic')
+#    getDetails('')
 #    getWords('data-toxic')
 #        arr = samples.find({"f": filter})
 #    else:
