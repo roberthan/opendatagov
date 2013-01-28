@@ -13,6 +13,7 @@ def getWords(filter):
             { '$group' : {
                 '_id' : "$t"
                 , "count": {"$sum": 1}
+                ,'category': { "$addToSet": "$c"}
             } },
             {"$sort": SON([("count", -1), ("_id", -1)])},
             { "$limit" : RESULTS }
@@ -23,16 +24,40 @@ def getWords(filter):
             { '$group' : {
                 '_id' : "$t"
                 , "count": {"$sum": 1}
+                ,'category': { "$addToSet": "$c"}
             } },
             {"$sort": SON([("count", -1), ("_id", -1)])},
             { "$limit" : RESULTS }
         ]
     eps = db.catalog.aggregate(pipeline=pipe2)
     eps = json.dumps(eps['result'])
-    print eps
+#    print eps
     return eps
+def getDetails(filter):
+    if not filter == '':
+        f = filter.split('-')
+        query = db.catalog.find( { 't' : { '$all': f } }, { 'n' : 1, 'u':1, 'c':1 } ).limit(25)
+    else:
+        query = db.catalog.find().limit(25)
+        #        eps = json.dumps(db.catalog.find( { 't' : { '$all': f } }, { 'n' : 1, 'u':1 } ).limit(50)['result'])
+#        print eps
+    i = 0
+    arr=[]
+    for item in query:
+        i = {}
+        print item['n']
+        print item['u']
+        i['name']=item['n']
+        i['url']=item['u']
+        i['category']=item['c']
+        arr.append(i)
+    eps=json.dumps(arr)
+    return eps
+
 if __name__ == '__main__':
-    getWords('data-toxic')
+#    getDetails('data-toxic')
+    getDetails('')
+#    getWords('data-toxic')
 #        arr = samples.find({"f": filter})
 #    else:
 #        arr = samples.find()
