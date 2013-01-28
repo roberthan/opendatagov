@@ -119,6 +119,8 @@ var populate_search = function(query) {
 
             target_div.append(new_div);
         });
+
+        $(".number-results").text(data.length +" results");
     });
 
 }
