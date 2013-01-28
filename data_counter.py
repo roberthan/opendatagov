@@ -2,6 +2,8 @@ __author__ = 'roberthan'
 from pymongo_connection import *
 from bson.son import SON
 import json
+RESULTS = 100
+
 def getWords(filter):
     if not filter == '':
         f = filter.split('-')
@@ -13,7 +15,7 @@ def getWords(filter):
                 , "count": {"$sum": 1}
             } },
             {"$sort": SON([("count", -1), ("_id", -1)])},
-            { "$limit" : 100 }
+            { "$limit" : RESULTS }
             ]
     else:
         pipe2 = [
@@ -23,7 +25,7 @@ def getWords(filter):
                 , "count": {"$sum": 1}
             } },
             {"$sort": SON([("count", -1), ("_id", -1)])},
-            { "$limit" : 50 }
+            { "$limit" : RESULTS }
         ]
     eps = db.catalog.aggregate(pipeline=pipe2)
     eps = json.dumps(eps['result'])
