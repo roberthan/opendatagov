@@ -128,6 +128,15 @@ var populate_search = function(query) {
         });
 
         $(".number-results").text(data.meta.count +" results");
+        console.log("here");
+        var data_gov_url = "https://explore.data.gov/catalog/raw?sortBy=relevance&q=" + encodeURIComponent(query);
+
+        $(".data-gov-search").attr("href",data_gov_url);
+        if (data.meta.count == 0) {
+            $(".data-gov-search").text("Maybe data.gov's search is better than ours?");
+        } else{
+            $(".data-gov-search").text("See More!");
+        }
     });
 
 }
