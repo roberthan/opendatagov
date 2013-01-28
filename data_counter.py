@@ -36,18 +36,19 @@ def getWords(filter):
 def getDetails(filter):
     if not filter == '':
         f = filter.split('-')
-        query = db.catalog.find( { 't' : { '$all': f } }, { 'n' : 1, 'u':1, 'c':1 } ).limit(50)
+        query = db.catalog.find( { 't' : { '$all': f } }, { 'n' : 1, 'u':1, 'c':1 } )
     else:
-        query = db.catalog.find().limit(50)
+        query = db.catalog.find()
         #        eps = json.dumps(db.catalog.find( { 't' : { '$all': f } }, { 'n' : 1, 'u':1 } ).limit(50)['result'])
 #        print eps
-#    print
+    meta = {}
+    meta['count'] = query.count()
     i = 0
     arr=[]
-    for item in query:
+    for item in query.limit(50):
         i = {}
-        print item['n']
-        print item['u']
+#        print item['n']
+#        print item['u']
         i['name']=item['n']
         i['url']=item['u']
         if item.has_key('c'):
@@ -55,13 +56,15 @@ def getDetails(filter):
         else:
             i['category']=''
         arr.append(i)
-
-    eps=json.dumps(arr)
+    eps = {}
+    eps['meta']=meta
+    eps['results']=json.dumps(arr)
+    print eps
     return eps
 
 if __name__ == '__main__':
-    getDetails('data-toxic')
-#    getDetails('')
+#    getDetails('data-toxic')
+    getDetails('')
 #    getWords('data-toxic')
 #        arr = samples.find({"f": filter})
 #    else:
