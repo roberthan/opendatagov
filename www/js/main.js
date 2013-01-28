@@ -6,11 +6,11 @@ var get_tagcloud = function(query){
 
 
     var fixed_query = $.trim(query);
-    fixed_query = fixed_query.replace(" ","-")
+    fixed_query = fixed_query.replace(/ /g,"-")
     var endpoint = "http://data2.me:5000/tagcloud/" + encodeURIComponent(fixed_query);
     
     
-    populate_search(fixed_query);
+    populate_search(query);
 
     $.getJSON(endpoint, {}, function(data, success, jqXHR) {
         var min_count = 100000000000;
@@ -94,7 +94,7 @@ var proto_div = "<div class=\"search-result\"></div>"
 
 var populate_search = function(query) {
     var fixed_query = $.trim(query);
-    fixed_query = fixed_query.replace(" ","-")
+    fixed_query = fixed_query.replace(/ /g,"-")
     var endpoint = "http://data2.me:5000/keyword/" + encodeURIComponent(fixed_query);
 
     
@@ -136,7 +136,7 @@ var populate_search = function(query) {
         });
 
         $(".number-results").text(data.meta.count +" results");
-        console.log("here");
+        //console.log(query);
         var data_gov_url = "https://explore.data.gov/catalog/raw?sortBy=relevance&q=" + encodeURIComponent(query);
 
         $(".data-gov-search").attr("href",data_gov_url);
