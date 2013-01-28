@@ -4,16 +4,40 @@ from bson.son import SON
 
 
 def getWord(filter):
-    if filter:
-        arr = samples.find({"f": filter})
-    else:
-        arr = samples.find()
-    print samples.aggregate([
-            {"$unwind": "$f"},
-            {"$group": {"_id": "$f", "count": {"$sum": 1}}},
-            {"$sort": SON([("count", -1)])}
-        ])
+#    if filter:
+#        arr = samples.find({"f": filter})
+#    else:
+#        arr = samples.find()
+#    print db.catalog.aggregate([
+#            {"$unwind": "$t"},
+#            {"$group": {"_id": "$t", "count": {"$sum": 1}}},
+#            {"$sort": SON([("count", -1)])}
+#        ])
+    pipe = [
+#        {'$match':{'category':'In'}},
+        { '$group' : {
+            '_id' : "$value"
+        } }
+    ]
 
+#    eps = db.key_terms.aggregate(pipeline=pipe)
+
+    pipe2 = [
+        #        {'$match':{'category':'In'}},
+#        { '$match' : { 't' : "inform" } },
+        { '$match' : { 't' : { '$all': [ "toxic", "data" ] }} },
+        {"$unwind": "$t"},
+        { '$group' : {
+            '_id' : "$t"
+            , "count": {"$sum": 1}
+        } },
+        {"$sort": SON([("count", -1), ("_id", -1)])},
+        { "$limit" : 50 }
+        ]
+
+    eps = db.catalog.aggregate(pipeline=pipe2)
+
+    print eps['result']
 getWord('')
 
 #    choices = []
