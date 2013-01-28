@@ -58,8 +58,10 @@ body {
     margin-bottom: 10px;
 }
 
-.tagcloud text {
+.tagword {
     cursor: pointer;
+
+    fill: #333;
 
     -webkit-touch-callout: none;
     -webkit-user-select: none;
