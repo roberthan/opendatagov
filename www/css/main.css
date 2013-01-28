@@ -5,6 +5,12 @@ body, html {
     width: 100%;
 }
 
+em {
+    text-decoration: none;
+    font-style: normal;
+    font-weight: bold;
+}
+
 body {
     padding-bottom: 50px;
     background: white url("../img/bg.png") repeat-x fixed top;
@@ -25,8 +31,7 @@ body {
 
 .titlebar em {
     color: #333;
-    text-decoration: none;
-    font-style: normal;
+    font-weight: normal;
 }
 
 .titlebar .logo{
@@ -34,7 +39,7 @@ body {
     vertical-align: middle;
 }
 
-.instructions {
+.extra-info {
     background-color: #f0f0f0;
 
     border-top: 1px solid #ccc;
@@ -96,10 +101,12 @@ body {
 .search-container {
     text-align: center;
     margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 #search-box {
     width: 50%;
+    border: 1px solid #333;
 }
 
 .results {
@@ -107,13 +114,13 @@ body {
     border: 2px dashed #ccc;
     min-height: 200px;
 
-    margin-top: 20px;
+    margin-top: 10px;
 
-    -moz-border-radius: 5px;
+    /*-moz-border-radius: 5px;
     -webkit-border-radius: 5px;
     -o-border-radius: 5px;
     -border-radius: 5px;
-    border-radius: 5px;
+    border-radius: 5px;*/
 }
 
 .results .no-results {
