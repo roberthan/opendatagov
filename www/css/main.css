@@ -13,7 +13,7 @@ em {
 
 body {
     padding-bottom: 50px;
-    background: white url("../img/bg.png") repeat-x fixed top;
+    background: white url("../img/bg.png") no-repeat fixed top;
 }
 
 .centered {
