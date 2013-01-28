@@ -1,5 +1,5 @@
 $(function() {
-    var endpoint = "http://data2.me/tagcloud/";
+    var endpoint = "http://data2.me:5000/tagcloud/";
     $.getJSON(endpoint, {}, function(data, success, jqXHR) {
         var min_count = 100000000000;
         var max_count = 0;
