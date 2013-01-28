@@ -29,7 +29,8 @@ $(function() {
                 .attr("text-anchor", "middle")
                 .attr("transform", function(d) {
                     return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
-                }).text(function(d){return d.text;}).classed("energy", true);
+                }).text(function(d){return d.text;})
+                .style("fill", "#333");
         }
 
         var layout = d3.layout.cloud()
