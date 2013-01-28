@@ -7,7 +7,7 @@ var get_tagcloud = function(query){
     var endpoint = "http://data2.me:5000/tagcloud/" + encodeURIComponent(fixed_query);
     console.log("Query: "+query+" url "+endpoint);
     
-    if (fixed_query != "") populate_search(fixed_query);
+    populate_search(fixed_query);
 
     $.getJSON(endpoint, {}, function(data, success, jqXHR) {
         var min_count = 100000000000;
@@ -92,6 +92,13 @@ var populate_search = function(query) {
     console.log("Query: "+query+" url "+endpoint);
     $(".results .results-list").empty();
 
+    if (fixed_query == "") {
+        $(".status-results").show();
+        $(".results .no-results").show();
+        $(".results .loading").hide();
+        return;
+    }
+
     $(".status-results").show();
     $(".results .no-results").hide();
     $(".results .loading").show();
@@ -100,7 +107,7 @@ var populate_search = function(query) {
         console.log(data);
 
         $(".results .loading").hide();
-        if (data.length == 0) {
+        if (data.results.length == 0) {
             $(".results .no-results").show();
         }
         $(".status-results").hide();
@@ -108,7 +115,7 @@ var populate_search = function(query) {
 
         var target_div = $(".results .results-list")
 
-        $.each(data, function(idx, d) {
+        $.each(data.results, function(idx, d) {
             var new_div = $(proto_div);
             var new_link = $("<a></a>");
             
@@ -120,7 +127,7 @@ var populate_search = function(query) {
             target_div.append(new_div);
         });
 
-        $(".number-results").text(data.length +" results");
+        $(".number-results").text(data.meta.count +" results");
     });
 
 }
