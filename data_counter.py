@@ -1,10 +1,37 @@
 __author__ = 'roberthan'
 from pymongo_connection import *
 from bson.son import SON
-
-
-def getWord(filter):
-#    if filter:
+import json
+def getWords(filter):
+#    print filter
+    if not filter == '':
+        f = filter.split('-')
+        pipe2 = [
+            { '$match' : { 't' : { '$all': f }} },
+            {"$unwind": "$t"},
+            { '$group' : {
+                '_id' : "$t"
+                , "count": {"$sum": 1}
+            } },
+            {"$sort": SON([("count", -1), ("_id", -1)])},
+            { "$limit" : 50 }
+            ]
+    else:
+        pipe2 = [
+            {"$unwind": "$t"},
+            { '$group' : {
+                '_id' : "$t"
+                , "count": {"$sum": 1}
+            } },
+            {"$sort": SON([("count", -1), ("_id", -1)])},
+            { "$limit" : 50 }
+        ]
+    eps = db.catalog.aggregate(pipeline=pipe2)
+    eps = json.dumps(eps['result'])
+    print eps
+    return eps
+if __name__ == '__main__':
+    getWords('data-toxic')
 #        arr = samples.find({"f": filter})
 #    else:
 #        arr = samples.find()
@@ -13,32 +40,14 @@ def getWord(filter):
 #            {"$group": {"_id": "$t", "count": {"$sum": 1}}},
 #            {"$sort": SON([("count", -1)])}
 #        ])
-    pipe = [
-#        {'$match':{'category':'In'}},
-        { '$group' : {
-            '_id' : "$value"
-        } }
-    ]
+#    pipe = [
+##        {'$match':{'category':'In'}},
+#        { '$group' : {
+#            '_id' : "$value"
+#        } }
+#    ]
 
 #    eps = db.key_terms.aggregate(pipeline=pipe)
-
-    pipe2 = [
-        #        {'$match':{'category':'In'}},
-#        { '$match' : { 't' : "inform" } },
-        { '$match' : { 't' : { '$all': [ "toxic", "data" ] }} },
-        {"$unwind": "$t"},
-        { '$group' : {
-            '_id' : "$t"
-            , "count": {"$sum": 1}
-        } },
-        {"$sort": SON([("count", -1), ("_id", -1)])},
-        { "$limit" : 50 }
-        ]
-
-    eps = db.catalog.aggregate(pipeline=pipe2)
-
-    print eps['result']
-getWord('')
 
 #    choices = []
 #    count = 0
