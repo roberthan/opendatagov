@@ -38,7 +38,7 @@ def getDetails(filter):
         f = filter.split('-')
         query = db.catalog.find( { 't' : { '$all': f } }, { 'n' : 1, 'u':1, 'c':1 } ).limit(25)
     else:
-        query = db.catalog.find().limit(25)
+        query = db.catalog.find().limit(50)
         #        eps = json.dumps(db.catalog.find( { 't' : { '$all': f } }, { 'n' : 1, 'u':1 } ).limit(50)['result'])
 #        print eps
     i = 0
