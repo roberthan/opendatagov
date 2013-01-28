@@ -14,7 +14,7 @@ def find(filter_text=''):
 
 @app.route('/keyword/')
 @app.route('/keyword/<filter_text>')
-def find(filter_text=''):
+def keyword(filter_text=''):
 #    return 'Hello World'
     return getDetails(filter_text)
 
