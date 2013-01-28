@@ -5,7 +5,7 @@ var get_tagcloud = function(query){
     var fixed_query = $.trim(query);
     fixed_query = fixed_query.replace(" ","-")
     var endpoint = "http://data2.me:5000/tagcloud/" + encodeURIComponent(fixed_query);
-    console.log("Query: "+query+" url "+endpoint);
+    
     
     populate_search(fixed_query);
 
@@ -27,7 +27,7 @@ var get_tagcloud = function(query){
 
         function draw(w) {
             // FIXME: DEBUG
-            console.log(w);
+            
 
             d3.select("#tagcloud-1").append("svg")
                 .attr("width", 800)
@@ -89,7 +89,7 @@ var populate_search = function(query) {
     fixed_query = fixed_query.replace(" ","-")
     var endpoint = "http://data2.me:5000/keyword/" + encodeURIComponent(fixed_query);
 
-    console.log("Query: "+query+" url "+endpoint);
+    
     $(".results .results-list").empty();
 
     if (fixed_query == "") {
@@ -104,7 +104,7 @@ var populate_search = function(query) {
     $(".results .loading").show();
 
     $.getJSON(endpoint, {}, function(data, success, jqXHR) {
-        console.log(data);
+        
 
         $(".results .loading").hide();
         if (data.results.length == 0) {
@@ -141,7 +141,7 @@ $(function() {
         }
         if (e.which == 13) {
             var text = $(this).val();
-            console.log("searched for: "+text);
+            
             // FIXME add loading animation
             get_tagcloud(text);
         }
