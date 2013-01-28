@@ -36,7 +36,7 @@ def getWords(filter):
 def getDetails(filter):
     if not filter == '':
         f = filter.split('-')
-        query = db.catalog.find( { 't' : { '$all': f } }, { 'n' : 1, 'u':1, 'c':1 } ).limit(25)
+        query = db.catalog.find( { 't' : { '$all': f } }, { 'n' : 1, 'u':1, 'c':1 } ).limit(50)
     else:
         query = db.catalog.find().limit(50)
         #        eps = json.dumps(db.catalog.find( { 't' : { '$all': f } }, { 'n' : 1, 'u':1 } ).limit(50)['result'])
