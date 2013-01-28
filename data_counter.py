@@ -11,7 +11,6 @@ def getWords(filter):
             { '$group' : {
                 '_id' : "$t"
                 , "count": {"$sum": 1}
-#                ,'data': { "$push": "$n"}
             } },
             {"$sort": SON([("count", -1), ("_id", -1)])},
             { "$limit" : 100 }
