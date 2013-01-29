@@ -21,6 +21,14 @@
         </script>
     </head>
     <body>
+        <div id="fb-root"></div>
+        <script>(function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=497061910333276";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
         <div class="header">
             <a class="btn_about">About</a>
         </div>
@@ -28,6 +36,14 @@
             <div class="titlebar">
                 <img class="logo" src="img/icon.png"/>
                 <em>search</em>.data.gov
+                <div class="titlebar-share-panel">
+                    <script type="text/javascript" src="http://www.reddit.com/static/button/button1.js"></script>
+                    <br/>
+                    <div class="fb-like" data-href="http://data2.me" data-send="true" data-layout="button_count" data-width="36" data-show-faces="false" data-font="lucida grande"></div>
+                    <br/>
+                    <a href="https://twitter.com/intent/tweet?button_hashtag=datagov" class="twitter-hashtag-button" data-url="http://data2.me">Tweet #datagov</a>
+                    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+                </div>
             </div>
             <div class="extra-info">
                 Click a keyword in the cloud to explore data available on data.gov.
@@ -39,7 +55,8 @@
                 <input type="search" name="search-box" id="search-box" placeholder="Search for data here and press [Enter]..." /><img id="loading-image" src="img/ajax-loader.gif" />
             </div>
             <div class="extra-info">
-                Preview: more than <em class="number-results">0 results</em> found in <em class="number-categories">13 categories</em>. <a  target="_blank" href="https://explore.data.gov/catalog/raw?q=&amp;sortBy=relevance" class="data-gov-search">Search More!</a>
+                Preview: more than <em class="number-results">0 results</em> found. <a  target="_blank" href="https://explore.data.gov/catalog/raw?q=&amp;sortBy=relevance" class="data-gov-search">Search More!</a>
+{#                Preview: more than <em class="number-results">0 results</em> found in <em class="number-categories">13 categories</em>. <a  target="_blank" href="https://explore.data.gov/catalog/raw?q=&amp;sortBy=relevance" class="data-gov-search">Search More!</a>#}
             </div>
             <div class="results">
                 <div class="status-results">
@@ -51,14 +68,20 @@
         </div>
         <div class="modal_box">
             <div class="modal_txt_about">
-                  <h2>Problem - </h2>
+                  <h3>Problem - </h3>
                   <h4>
                       <a href="http://data.gov">data.gov</a> works if you know what to look for, <i>but</i> exploring what datasets it offers is HARD
                   </h4>
-                    <h2>Solution - </h2>
+                    <h3>Solution - </h3>
                 <h4>
-                    data2.me is an experimental search interface that make exploring what's available on <a href="http://data.gov">data.gov</a> EASY
+                    data2.me is an experimental interface for exploring what's available on <a href="http://data.gov">data.gov</a> EASY
                 </h4>
+                <p>
+                    <b>Context:</b> The government has been making a lot of public data available on data.gov. While this is pretty cool, there isn't an easy way to explore and find what sort of data is up there unless you already know exactly what you're looking for.
+                </p>
+                <p>
+                    We created a tool that lets you explore a "tag cloud" of related data sets and see what sort of information is available -- under the premise that giving people the tools to see what's out there could help people think up creative uses for this data.
+                </p>
             </div>
             <a class="modal_btn_close">
                 Hide

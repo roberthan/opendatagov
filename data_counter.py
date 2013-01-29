@@ -1,5 +1,4 @@
-__author__ = 'roberthan'
-from pymongo_connection import *
+from lib.pymongo_connection import *
 from bson.son import SON
 import json
 RESULTS = 100

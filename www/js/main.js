@@ -4,11 +4,9 @@ var get_tagcloud = function(query){
     searching = true;
     $("#loading-image").show();
 
-
     var fixed_query = $.trim(query);
     fixed_query = fixed_query.replace(/ /g,"-")
     var endpoint = "http://data2.me:5000/tagcloud/" + encodeURIComponent(fixed_query);
-    
     
     populate_search(query);
 
@@ -59,7 +57,7 @@ var get_tagcloud = function(query){
                 }
  
                 $("#search-box").val(old_val + " " + text);
-                get_tagcloud(text);
+                get_tagcloud(old_val +" "+text);
             });
 
             $(".tagword").hover(function(e) {
@@ -96,9 +94,11 @@ var proto_div = "<div class=\"search-result\"></div>"
 
 var populate_search = function(query) {
     var fixed_query = $.trim(query);
-    fixed_query = fixed_query.replace(/ /g,"-")
+    fixed_query = fixed_query.replace(/ /g,"-");
+
     var endpoint = "http://data2.me:5000/keyword/" + encodeURIComponent(fixed_query);
 
+    window.location.hash = fixed_query;
     
     $(".results .results-list").empty();
 
@@ -115,7 +115,6 @@ var populate_search = function(query) {
 
     $.getJSON(endpoint, {}, function(data, success, jqXHR) {
         
-
         $(".results .loading").hide();
         if (data.results.length == 0) {
             $(".results .no-results").show();
@@ -152,7 +151,13 @@ var populate_search = function(query) {
 }
 
 $(function() {
-    get_tagcloud("");
+    if(window.location.hash) {
+        get_tagcloud(window.location.hash.replace('#',''));
+        $("#search-box").val(window.location.hash.replace('#','').replace(/-/g,' '));
+    }
+    else{
+        get_tagcloud("");
+    }
 
     $('#search-box').keypress(function (e) {
         if (searching) {
@@ -165,6 +170,10 @@ $(function() {
             get_tagcloud(text);
         }
     });
+    //resets the tag cloud on clear
+    $('#search-box').bind('click', function(e) { if ( this.value=="") {
+        get_tagcloud("");
+    } });
     //modal box for about
     $(".btn_about").on("click", function() {
         $("body").toggleClass("modal_open");
