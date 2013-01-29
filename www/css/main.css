@@ -228,7 +228,7 @@ body {
     /* Use at your own discretion */
     /*-webkit-transform: translateZ(0);*/
 }
-
+/*share panel*/
 .titlebar-share-panel{
     float: right;
     margin-top: -6px;
