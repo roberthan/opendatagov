@@ -231,5 +231,12 @@ body {
 
 .titlebar-share-panel{
     float: right;
-    padding-top: 12px;
+    margin-top: -6px;
+    list-style: none;
+}
+.titlebar-share-panel li:first-child{
+    height: 0;
+}
+.titlebar-share-panel li{
+    height: 24px;
 }
