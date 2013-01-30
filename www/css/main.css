@@ -235,7 +235,11 @@ body {
     list-style: none;
 }
 .titlebar-share-panel li:first-child{
+    z-index: 100;
+}
+.titlebar-share-panel li:first-child{
     height: 0;
+    z-index: 0;
 }
 .titlebar-share-panel li{
     height: 24px;
