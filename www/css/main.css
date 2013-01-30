@@ -234,10 +234,10 @@ body {
     margin-top: -6px;
     list-style: none;
 }
-.titlebar-share-panel li:first-child{
+.titlebar-share-panel li:nth-child(2){
     z-index: 100;
 }
-.titlebar-share-panel li:nth-child(2){
+.titlebar-share-panel li:first-child{
     height: 0;
     z-index: 0;
 }
