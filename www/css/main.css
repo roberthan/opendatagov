@@ -235,12 +235,14 @@ body {
     list-style: none;
 }
 .titlebar-share-panel li:nth-child(2){
-    z-index: 100;
+    /*z-index: 100;*/
 }
 .titlebar-share-panel li:first-child{
     height: 0;
-    z-index: 0;
+    /*z-index: 0;*/
+    display: block;
 }
 .titlebar-share-panel li{
     height: 24px;
+    display: inline;
 }
