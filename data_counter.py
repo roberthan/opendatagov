@@ -12,7 +12,7 @@ def getWords(filter):
             { '$group' : {
                 '_id' : "$t"
                 , "count": {"$sum": 1}
-                ,'category': { "$addToSet": "$c"}
+#                ,'category': { "$addToSet": "$c"}
             } },
             {"$sort": SON([("count", -1), ("_id", -1)])},
             { "$limit" : RESULTS }
@@ -23,7 +23,7 @@ def getWords(filter):
             { '$group' : {
                 '_id' : "$t"
                 , "count": {"$sum": 1}
-                ,'category': { "$addToSet": "$c"}
+#                ,'category': { "$addToSet": "$c"}
             } },
             {"$sort": SON([("count", -1), ("_id", -1)])},
             { "$limit" : RESULTS }
@@ -46,8 +46,6 @@ def getDetails(filter):
     arr=[]
     for item in query.limit(50).skip(0):
         i = {}
-#        print item['n']
-#        print item['u']
         i['name']=item['n']
         i['url']=item['u']
         if item.has_key('c'):

@@ -246,3 +246,7 @@ body {
     height: 24px;
     display: inline;
 }
+
+.titlebar a{
+    text-decoration: none;
+}

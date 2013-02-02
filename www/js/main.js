@@ -179,6 +179,7 @@ $(function() {
     //resets the tag cloud on clear
     $('#search-box').bind('click', function(e) { if ( this.value=="") {
         get_tagcloud("");
+        $('.number-results').text('0 results');
     } });
     //modal box for about
     $(".btn_about").on("click", function() {
