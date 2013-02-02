@@ -106,6 +106,8 @@ var populate_search = function(query) {
         $(".status-results").show();
         $(".results .no-results").show();
         $(".results .loading").hide();
+        $(".number-results").text("a lot of");
+        $(".data-gov-search").text("");
         return;
     }
 
@@ -136,7 +138,7 @@ var populate_search = function(query) {
             target_div.append(new_div);
         });
 
-        $(".number-results").text(data.meta.count +" results");
+        $(".number-results").text(data.meta.count);
         //console.log(query);
         var data_gov_url = "https://explore.data.gov/catalog/raw?sortBy=relevance&q=" + encodeURIComponent(query);
 
