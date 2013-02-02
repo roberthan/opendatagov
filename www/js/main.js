@@ -171,27 +171,13 @@ $(function() {
         }
         if (e.which == 13) {
             var text = $(this).val();
-            
             // FIXME add loading animation
             get_tagcloud(text);
         }
     });
-    //resets the tag cloud on clear
-    $('#search-box').bind('click', function(e) { if ( this.value=="") {
-        get_tagcloud("");
-        $('.number-results').text('0 results');
-    } });
-    //modal box for about
-    $(".btn_about").on("click", function() {
-        $("body").toggleClass("modal_open");
-    });
 
-    $(".centered").on("click", function() {
-        if($("body").hasClass("modal_open")){
-            $("body").removeClass("modal_open");
-        }
-    });
-    $(".modal_btn_close").on("click", function() {
-        $("body").toggleClass("modal_open");
+    $(".about_btn_close, .about_btn_show").on("click", function(e) {
+        $(".extra-info").toggleClass("show_about");
+        e.preventDefault();
     });
 });
