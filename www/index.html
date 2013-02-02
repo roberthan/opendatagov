@@ -29,9 +29,6 @@
             js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=497061910333276";
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));</script>
-        <div class="header">
-            <a class="btn_about">About</a>
-        </div>
         <div class="centered">
             <div class="titlebar">
                 <a href="/">
@@ -52,7 +49,32 @@
                 </ul>
             </div>
             <div class="extra-info">
-                Click a keyword in the cloud to explore data available on data.gov.
+                <span>Click a keyword in the cloud to explore data available on <a href="http://data.gov">data.gov</a>. </span>
+                <a href="#" class="about_btn_show">
+                    (Learn more)
+                </a>
+                <div class="about_container">
+                    <div class="txt_about">
+                        <h3>Problem - </h3>
+                        <h4>
+                            <a href="http://data.gov">data.gov</a> works if you know what to look for, <i>but</i> exploring what datasets it offers is HARD
+                        </h4>
+                        <h3>Solution - </h3>
+                        <h4>
+                            data2.me is an experimental interface for exploring what's available on <a href="http://data.gov">data.gov</a> EASY
+                        </h4>
+                        <p>
+                            <b>Context:</b> The government has been making a lot of public data available on data.gov. While this is pretty cool, there isn't an easy way to explore and find what sort of data is up there unless you already know exactly what you're looking for.
+                        </p>
+                        <p>
+                            We created a tool that lets you explore a "tag cloud" of related data sets and see what sort of information is available -- under the premise that giving people the tools to see what's out there could help people think up creative uses for this data.
+                        </p>
+                    </div>
+                    <a href="#"  class="about_btn_close">
+                        (Hide)
+                    </a>
+                </div>
+
             </div>
             <div class="tagcloud" id="tagcloud-1">
                 <!-- Tag cloud is inserted here-->
@@ -72,27 +94,6 @@
                 </div>
                 <div class="results-list"></div>
             </div>
-        </div>
-        <div class="modal_box">
-            <div class="modal_txt_about">
-                  <h3>Problem - </h3>
-                  <h4>
-                      <a href="http://data.gov">data.gov</a> works if you know what to look for, <i>but</i> exploring what datasets it offers is HARD
-                  </h4>
-                    <h3>Solution - </h3>
-                <h4>
-                    data2.me is an experimental interface for exploring what's available on <a href="http://data.gov">data.gov</a> EASY
-                </h4>
-                <p>
-                    <b>Context:</b> The government has been making a lot of public data available on data.gov. While this is pretty cool, there isn't an easy way to explore and find what sort of data is up there unless you already know exactly what you're looking for.
-                </p>
-                <p>
-                    We created a tool that lets you explore a "tag cloud" of related data sets and see what sort of information is available -- under the premise that giving people the tools to see what's out there could help people think up creative uses for this data.
-                </p>
-            </div>
-            <a class="modal_btn_close">
-                Hide
-                </a>
         </div>
     </body>
 </html>

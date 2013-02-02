@@ -11,7 +11,7 @@ db.catalog.remove()
 
 def get_keywords(item):
     keywords = matcher.split(item['keywords'].replace('/','').replace('-','').strip().lower())
-    keywords += (matcher.split(item['description'].replace('/','').replace('-','').strip().lower()))
+#    keywords += (matcher.split(item['description'].replace('/','').replace('-','').strip().lower()))
     keywords += (matcher.split(item['name'].replace('/','').replace('-','').strip().lower()))
     return keywords
 #get stems
