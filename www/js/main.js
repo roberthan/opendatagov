@@ -24,6 +24,7 @@ var get_tagcloud = function(query){
         });
         
         var fontSize = d3.scale.linear().range([10, 72]);
+        var textColor = d3.scale.category10();
         fontSize = fontSize.domain([min_count, max_count]);
 
         function draw(w) {
@@ -41,7 +42,10 @@ var get_tagcloud = function(query){
                 .style("font-size", function(d) { return d.size + "px"; })
                 .style("font-family", "Lato")
                 // FIXME: Debug?
-                .style("fill",function(d){return '#'+Math.floor(Math.random()*16777215).toString(16);})
+                .style("fill",function(d){
+                    //console.log(d);
+                    return textColor(d.text.toLowerCase());
+                })
                 .attr("text-anchor", "middle")
                 .attr("transform", function(d) {
                     return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
