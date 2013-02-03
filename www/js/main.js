@@ -185,6 +185,18 @@ $(function() {
             $(this).text("(learn more)");
         }
         e.preventDefault();
-    }).click();
+    });
+
+    // Only open it up on their first visit.
+    try {
+        var visited_before = localStorage.getItem("visited_before");
+        if (!(visited_before)) {
+            $(".about_btn").click();
+            localStorage.setItem("visited_before", true);
+        } 
+    } catch (e) {
+        $(".about_btn").click();
+    }
+    
 });
 
