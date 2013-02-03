@@ -19,6 +19,10 @@ body {
     background: white url("../img/bg.gif");
 }
 
+h4 {
+    font-weight: normal;
+}
+
 .centered {
     margin-left: auto;
     margin-right: auto;
@@ -50,6 +54,8 @@ body {
     margin-top: 10px;
     padding: 6px 12px;
     /*padding-left: 5px;*/
+
+    clear: both;
 }
 
 .tagcloud {
@@ -153,18 +159,6 @@ body {
     padding: 6px 12px;
 }
 
-.modal_txt_about{
-    padding: 24px 0;
-    width: 75%;
-    margin: 0 auto;
-}
-.modal_txt_about h4{
-    padding-left: 16px;
-}
-/*animations*/
-.centered, .modal_box {
-    transition: all 0.4s ease; /* prefix me */
-}
 body {
     /* Use at your own discretion */
     /*-webkit-transform: translateZ(0);*/
@@ -174,6 +168,8 @@ body {
     float: right;
     margin-top: -6px;
     list-style: none;
+    clear: both;
+    margin-bottom: 0;
 }
 .titlebar-share-panel li:nth-child(2){
     /*z-index: 100;*/
@@ -196,21 +192,19 @@ body {
 .about_container{
     display: none;
 }
-.show_about .about_btn_close{
-    display: block;
-}
-.show_about .about_container{
-    display: block;
+.about_btn {
+    display: inline-block;
+    float: right;
 }
 
 .extra-info a,
 .extra-info a:visited{
     cursor: pointer;
     text-decoration: none;
-    color: #a9a9a9;
+    color: #aa44dd;
 }
 
 .extra-info a:hover,
 .extra-info a:focus{
-    color: gray;
+    color: #cc66ff;
 }

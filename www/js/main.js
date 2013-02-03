@@ -176,8 +176,14 @@ $(function() {
         }
     });
 
-    $(".about_btn_close, .about_btn_show").on("click", function(e) {
-        $(".extra-info").toggleClass("show_about");
+    $(".about_btn").on("click", function(e) {
+        if ($(".about_container").is(":hidden")) {
+            $(".about_container").slideDown();
+            $(this).text("(hide)");
+        } else {
+            $(".about_container").slideUp();
+            $(this).text("(learn more)");
+        }
         e.preventDefault();
     });
 });
