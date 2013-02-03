@@ -208,3 +208,7 @@ a:hover,
 a:focus{
     color: #cc66ff;
 }
+
+p.no-bottom-margin {
+    margin-bottom: 0;
+}
