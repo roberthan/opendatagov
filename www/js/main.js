@@ -150,7 +150,7 @@ var populate_search = function(query) {
         if (data.meta.count == 0) {
             $(".data-gov-search").text("Maybe data.gov's search is better than ours?");
         } else{
-            $(".data-gov-search").text("See More!");
+            $(".data-gov-search").text("See more on data.gov.");
         }
     });
 
