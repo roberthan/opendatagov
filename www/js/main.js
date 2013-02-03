@@ -185,5 +185,6 @@ $(function() {
             $(this).text("(learn more)");
         }
         e.preventDefault();
-    });
+    }).click();
 });
+
