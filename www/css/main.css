@@ -197,14 +197,14 @@ body {
     float: right;
 }
 
-.extra-info a,
-.extra-info a:visited{
+a,
+a:visited{
     cursor: pointer;
     text-decoration: none;
     color: #aa44dd;
 }
 
-.extra-info a:hover,
-.extra-info a:focus{
+a:hover,
+a:focus{
     color: #cc66ff;
 }

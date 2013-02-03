@@ -12,6 +12,6 @@ with open('catalog.csv') as csvfile:
         item['agency'] = row['Agency']
         item['uid'] = row['Uid']
         item['source'] = 'data.gov'
-        item['url'] = 'https://datagov.socrata.com/'+row['Name'].rsplit('(').pop().replace(')','')
+        item['url'] = 'http://explore.data.gov/'+row['Name'].rsplit('(').pop().replace(')','')
         item['name'] = row['Name'].split('(')[0]
         db.raw_catalog.insert(item)
