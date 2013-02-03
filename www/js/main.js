@@ -165,6 +165,16 @@ $(function() {
         get_tagcloud("");
     }
 
+    $(window).hashchange( function(){
+        if(window.location.hash) {
+            get_tagcloud(window.location.hash.replace('#',''));
+            $("#search-box").val(window.location.hash.replace('#','').replace(/-/g,' '));
+        }
+        else{
+            get_tagcloud("");
+        }
+    });
+
     $('#search-box').keypress(function (e) {
         if (searching) {
             return;
