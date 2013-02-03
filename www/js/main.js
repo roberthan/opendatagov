@@ -165,16 +165,6 @@ $(function() {
         get_tagcloud("");
     }
 
-    $(window).hashchange( function(){
-        if(window.location.hash) {
-            get_tagcloud(window.location.hash.replace('#',''));
-            $("#search-box").val(window.location.hash.replace('#','').replace(/-/g,' '));
-        }
-        else{
-            get_tagcloud("");
-        }
-    });
-
     $('#search-box').keypress(function (e) {
         if (searching) {
             return;
@@ -185,6 +175,11 @@ $(function() {
             get_tagcloud(text);
         }
     });
+    //resets the tag cloud on clear
+    $('#search-box').bind('click', function(e) { if ( this.value=="") {
+        get_tagcloud("");
+        $('.number-results').text('0 data sets');
+    } });
 
     $(".about_btn").on("click", function(e) {
         if ($(".about_container").is(":hidden")) {
@@ -195,18 +190,6 @@ $(function() {
             $(this).text("(learn more)");
         }
         e.preventDefault();
-    });
-
-    // Only open it up on their first visit.
-    try {
-        var visited_before = localStorage.getItem("visited_before");
-        if (!(visited_before)) {
-            $(".about_btn").click();
-            localStorage.setItem("visited_before", true);
-        } 
-    } catch (e) {
-        $(".about_btn").click();
-    }
-    
+    }).click();
 });
 
